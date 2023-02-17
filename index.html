@@ -1,71 +1,60 @@
-package jogo;
-
-import java.io.PrintStream;
-import java.util.Random;
-import java.util.Scanner;
+import java.applet.AudioClip;
+import java.awt.HeadlessException;
+import java.net.URL;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
  * @author paulf
  */
-public class Jogo {
+public class JavaApplication9 extends JFrame {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        PrintStream show = System.out;
-        
-        Scanner scan = new Scanner(System.in);
-        
-        Random gerador = new Random();
-        
-        int opcao;
-        int escolha_computador;
-        int escolha_usuario;        
-        
-        show.println("OOPA QUAL O SEU NOME?");
-        String nome = scan.nextLine();
-        show.println("Prazer meu caro " + nome);
-        show.println( nome + (" bora jogar?"));
-        show.println("\nInforme o número da sua opção.\n1 -> Sim \n2 ->Não");
-        opcao = scan.nextInt();
-        
-        if(opcao == 2){
-            
-            show.println("Bah mas que coisa, tudo bem então");
-            
-        }else if(opcao == 1){
-            
-           
-           show.println("AE! blz o jogo é assim...");
-           show.println("Eu vou escolher um número de 0 a 10 ");
-           show.println("Mas não vou falar pra você qual eu escolhi");
-           show.println("E se você adivinhar qual eu escolhi você ganha!!");   
-           
-          escolha_computador = gerador.nextInt(11);
-          
-          show.println("ok, já escolhi ");
-          show.println("Agora tente adivinhar " + nome);
-          
-          
-       do{
-           
-         escolha_usuario = scan.nextInt();
-         if(escolha_usuario != escolha_computador){
-             show.println("Resposta errada parceiro");
-             
-             
-             
-         }else{
-             show.println("parabens! Você acertou!");
-             
-         }
-          
-          
-        }while(escolha_computador != escolha_usuario);
-        
-    }
+ JButton tocar;
+
+       
+
+    public JavaApplication9(){
     
-}
+        tocar = new JButton("Voz de teste");
+        
+                setDefaultCloseOperation(EXIT_ON_CLOSE);
+                setSize(200,200);
+                setLocationRelativeTo(null);
+                setVisible(true);
+                
+                add(tocar);
+                tocar.addActionListener(new ActionListener){
+        public void actionPerformed(Actionevent e){
+                play(Silvio);
+            
+        }
+    };
+                
+} 
+                
+            
+        }
+    
+    public void play(String nomeDoAudio) {
+             URL url = getClass().class.getResource(nomeDoAudio+".wav");
+            AudioClip audio = applet.newAudioClip(url);
+            audio.play();
+    }
+
+    private static void main(String[]args){
+        
+new TocarSom();
+        
+        }
+
+    private static class applet {
+
+        private static AudioClip newAudioClip(URL url) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public applet() {
+        }
+    }
